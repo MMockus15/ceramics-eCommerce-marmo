@@ -13,6 +13,8 @@ const Footer = () => {
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
+            fontFamily: "fantasy",
+            fontSize: "18px",
           }}
         >
           <div className="col-md-6">
@@ -20,7 +22,7 @@ const Footer = () => {
               Made with ❤️ by{" "}
               <a
                 href="https://mmockus15.github.io/mmockus-professional-portfolio/"
-                className="text-decoration-underline text-dark fs-5"
+                // className="text-dark fs-5"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -28,7 +30,7 @@ const Footer = () => {
               </a>
             </p>
             <a
-              className="text-dark fs-4"
+              // className="text-dark fs-4"
               href="https://github.com/MMockus15"
               target="_blank"
               rel="noreferrer"
