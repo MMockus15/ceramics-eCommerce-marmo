@@ -1,5 +1,4 @@
-// productsReducer.js
-
+import { createSlice } from '@reduxjs/toolkit';
 import products from "./products";
 
 const initialState = {
@@ -8,35 +7,25 @@ const initialState = {
   error: null
 };
 
-const productsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_PRODUCT":
-      return {
-        ...state,
-        products: [...state.products, action.payload]
-      };
-    case "REMOVE_PRODUCT":
-      return {
-        ...state,
-        products: state.products.filter(product => product.id !== action.payload)
-      };
-    case "UPDATE_PRODUCT":
-      const updatedProducts = state.products.map(product => {
-        if (product.id === action.payload.id) {
-          return {
-            ...product,
-            ...action.payload
-          };
-        }
-        return product;
-      });
-      return {
-        ...state,
-        products: updatedProducts
-      };
-    default:
-      return state;
-  }
-};
+const productsSlice = createSlice({
+  name: 'products',
+  initialState,
+  reducers: {
+    addProduct(state, action) {
+      state.products.push(action.payload);
+    },
+    removeProduct(state, action) {
+      state.products = state.products.filter(product => product.id !== action.payload);
+    },
+    updateProduct(state, action) {
+      const index = state.products.findIndex(product => product.id === action.payload.id);
+      if (index !== -1) {
+        state.products[index] = action.payload;
+      }
+    },
+  },
+});
 
-export default productsReducer;
+export const { addProduct, removeProduct, updateProduct } = productsSlice.actions;
+export default productsSlice.reducer;
+
