@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      {/* <Main /> */}
-      {/* <Product /> */}
+      <Main />
+      <Product />
       <Footer />
     </>
   )

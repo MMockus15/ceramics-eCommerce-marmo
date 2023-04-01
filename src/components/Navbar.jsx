@@ -1,49 +1,82 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+const NavbarContainer = styled.nav`
+  background-color: #E1C8AB;
+  padding: 20px;
+  font-family: 'Indie Flower', cursive;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const BrandLink = styled(NavLink)`
+  color: #332E2C;
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
+const NavItem = styled.li`
+  margin: 0 15px;
+`;
+
+const NavLinks = styled.ul`
+  display: flex;
+  align-items: center;
+`;
+
+const ButtonLink = styled(NavLink)`
+  background-color: #332E2C;
+  color: #E1C8AB;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #E1C8AB;
+    color: #332E2C;
+  }
+`;
 
 const Navbar = () => {
-    const myStyle = {
-        color: "white",
-        backgroundColor: "DodgerBlue",
-        padding: "10px",
-        fontFamily: "Sans-Serif"
-      };
-    // const state = useSelector(state => state.handleCart)
-    return (
-        <nav style={myStyle}>
-            <div className="container">
-                <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/"> React Ecommerce</NavLink>
-                <button className="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+  const cartItems = useSelector(state => state.handleCart);
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav m-auto my-2 text-center">
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/">Home </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/product">Products</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/about">About</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/contact">Contact</NavLink>
-                        </li>
-                    </ul>
-                    <div className="buttons text-center">
-                        <NavLink to="/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Login</NavLink>
-                        <NavLink to="/register" className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> Register</NavLink>
-                        {/* <NavLink to="/cart" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i> Cart ({state.length}) </NavLink> */}
-                    </div>
-                </div>
+  return (
+    <NavbarContainer>
+      <BrandLink to="/">React Ecommerce</BrandLink>
+      <NavLinks>
+        <NavItem>
+          <NavLink to="/">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/product">Products</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/about">About</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/contact">Contact</NavLink>
+        </NavItem>
+      </NavLinks>
+      <div>
+        <ButtonLink to="/login">
+          <i className="fa fa-sign-in-alt mr-1"></i> Login
+        </ButtonLink>
+        <ButtonLink to="/register">
+          <i className="fa fa-user-plus mr-1"></i> Register
+        </ButtonLink>
+        <ButtonLink to="/cart">
+          <i className="fa fa-cart-shopping mr-1"></i> Cart ({cartItems.length})
+        </ButtonLink>
+      </div>
+    </NavbarContainer>
+  );
+};
 
-
-            </div>
-        </nav>
-    )
-}
-
-export default Navbar
+export default Navbar;
