@@ -74,6 +74,10 @@ const Cart = () => {
     }, 0);
   }
 
+  const addProductToCart = (product) => {
+	return { type: 'ADD_TO_CART', payload: product };
+  }
+
   return (
     <CartContainer>
       <CartTitle>Your Cart</CartTitle>
@@ -106,3 +110,5 @@ const Cart = () => {
 }
 
 export default Cart;
+
+export const addProductToCart = (product) => ({ type: 'ADD_TO_CART', payload: product });

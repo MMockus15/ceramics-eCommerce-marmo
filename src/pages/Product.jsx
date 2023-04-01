@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart } from "../pages/Cart"
-
+import { addProductToCart } from "../pages/Cart";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
@@ -26,4 +25,5 @@ const Product = ({ product }) => {
 };
 
 export default Product;
+
 
