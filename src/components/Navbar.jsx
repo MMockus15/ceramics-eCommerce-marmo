@@ -42,6 +42,27 @@ const ButtonLink = styled(NavLink)`
     background-color: #e1c8ab;
     color: #332e2c;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 7px 15px;
+    margin: 0 3px;
+  }
+`;
+
+const RightContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+`;
+
+const CartIcon = styled.i`
+  margin-right: 5px;
 `;
 
 const Navbar = () => {
@@ -64,7 +85,7 @@ const Navbar = () => {
           <NavLink to="/contact">Contact</NavLink>
         </NavItem>
       </NavLinks>
-      <div>
+      <RightContainer>
         <ButtonLink to="/login">
           <i className="fa fa-sign-in-alt mr-1"></i> Login
         </ButtonLink>
@@ -72,12 +93,14 @@ const Navbar = () => {
           <i className="fa fa-user-plus mr-1"></i> Register
         </ButtonLink>
         <ButtonLink to="/cart">
-          <i className="fa fa-cart-shopping mr-1"></i> Cart (
-          {cartItems && cartItems.length})
+          <CartIcon className="fa fa-cart-shopping"></CartIcon>
+          ({cartItems && cartItems.length})
         </ButtonLink>
-      </div>
+      </RightContainer>
     </NavbarContainer>
   );
 };
 
 export default Navbar;
+
+
