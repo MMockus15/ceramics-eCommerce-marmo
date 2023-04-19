@@ -12,7 +12,7 @@ const NavbarContainer = styled.nav`
 `;
 
 const BrandLink = styled(NavLink)`
-  color: #332e2c;
+  color: #009688;
   font-size: 2rem;
   font-weight: bold;
 `;
@@ -24,6 +24,8 @@ const NavItem = styled.li`
 const NavLinks = styled.ul`
   display: flex;
   align-items: center;
+  text-decoration: none;
+  font-size: 1.3rem;
 `;
 
 const ButtonLink = styled(NavLink)`

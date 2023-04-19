@@ -1,12 +1,12 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
 
 const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   margin-top: 50px;
 `;
 
@@ -58,32 +58,36 @@ const CartItemTotalPrice = styled.p`
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(state => state.handleCart);
+  const cartItems = useSelector((state) => state.handleCart);
 
   const handleRemoveCartItem = (id) => {
-    dispatch({ type: 'REMOVE_FROM_CART', payload: id });
-  }
+    dispatch({ type: "REMOVE_FROM_CART", payload: id });
+  };
 
   const handleQuantityChange = (e, id) => {
-    dispatch({ type: 'UPDATE_CART_QUANTITY', payload: { id, quantity: e.target.value } });
-  }
+    dispatch({
+      type: "UPDATE_CART_QUANTITY",
+      payload: { id, quantity: e.target.value },
+    });
+  };
 
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => {
-      return total + (item.price * item.quantity);
+      return total + item.price * item.quantity;
     }, 0);
-  }
+  };
 
   const addProductToCart = (product) => {
-	return { type: 'ADD_TO_CART', payload: product };
-  }
+    return { type: "ADD_TO_CART", payload: product };
+  };
 
   return (
     <CartContainer>
       <CartTitle>Your Cart</CartTitle>
-      {cartItems.length === 0 ?
-        <p>Your cart is currently empty.</p> :
-        cartItems.map(item => (
+      {cartItems.length === 0 ? (
+        <p>Your cart is currently empty.</p>
+      ) : (
+        cartItems.map((item) => (
           <CartItem key={item.id}>
             <CartItemImage src={item.image} alt={item.name} />
             <CartItemDetails>
@@ -91,24 +95,38 @@ const Cart = () => {
               <CartItemPrice>${item.price.toFixed(2)}</CartItemPrice>
               <CartItemQuantity>
                 <label htmlFor={`quantity-${item.id}`}>Quantity:</label>
-                <input type="number" id={`quantity-${item.id}`} min="1" max="10" value={item.quantity} onChange={(e) => handleQuantityChange(e, item.id)} />
+                <input
+                  type="number"
+                  id={`quantity-${item.id}`}
+                  min="1"
+                  max="10"
+                  value={item.quantity}
+                  onChange={(e) => handleQuantityChange(e, item.id)}
+                />
               </CartItemQuantity>
             </CartItemDetails>
-            <CartItemTotalPrice>${(item.price * item.quantity).toFixed(2)}</CartItemTotalPrice>
-            <button onClick={() => handleRemoveCartItem(item.id)}>Remove</button>
+            <CartItemTotalPrice>
+              ${(item.price * item.quantity).toFixed(2)}
+            </CartItemTotalPrice>
+            <button onClick={() => handleRemoveCartItem(item.id)}>
+              Remove
+            </button>
           </CartItem>
         ))
-      }
-      {cartItems.length > 0 &&
+      )}
+      {cartItems.length > 0 && (
         <div>
           <p>Total: ${calculateTotalPrice().toFixed(2)}</p>
           <button>Checkout</button>
         </div>
-      }
+      )}
     </CartContainer>
   );
-}
+};
 
 export default Cart;
 
-export const addProductToCart = (product) => ({ type: 'ADD_TO_CART', payload: product });
+export const addProductToCart = (product) => ({
+  type: "ADD_TO_CART",
+  payload: product,
+});
