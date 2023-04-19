@@ -1,6 +1,8 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ContactPage } from "./pages";
+
 import ReactDOM from "react-dom/client";
 
 
@@ -32,6 +34,7 @@ root.render(
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Contact" element={<ContactPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Provider>
