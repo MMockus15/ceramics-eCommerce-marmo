@@ -8,7 +8,7 @@ const Login = () => {
     const handleRegister = (e) => {
         e.preventDefault();
         // Redirect to home page
-        navigate("/main");
+        navigate("/");
     }
 
 
