@@ -1,7 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ContactPage } from "./pages";
 
 import ReactDOM from "react-dom/client";
 
@@ -9,7 +8,7 @@ import ReactDOM from "react-dom/client";
 
 import productsReducer from "./redux/reducer/productsReducer";
 import cartReducer from "./redux/reducer/cartReducer";
-import { Home, Products, Product, AboutPage, Cart, Checkout, Login, Register, PageNotFound } from "./pages";
+import { Home, Products, Product, AboutPage, Cart, Checkout, Login, Register, PageNotFound, ContactPage } from "./pages";
 
 const rootReducer = combineReducers({
   products: productsReducer,

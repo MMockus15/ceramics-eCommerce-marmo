@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../pages/Cart";
+import ProductList from "../components/ProductList";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const Product = ({ product }) => {
 
   return (
     <div className="product">
+      <ProductList />
       <img src={product.image} alt={product.title} />
       <h2>{product.title}</h2>
       <p>{product.description}</p>
