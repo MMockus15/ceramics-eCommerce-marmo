@@ -25,7 +25,7 @@ const NavLinks = styled.ul`
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: 1.3rem;
+  font-size: 1.rem;
 `;
 
 const ButtonLink = styled(NavLink)`
@@ -69,6 +69,8 @@ const CartIcon = styled.i`
 
 const Navbar = () => {
   const cartItems = useSelector((state) => state.handleCart);
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  const userName = useSelector((state) => state.userName);
 
   return (
     <NavbarContainer>
@@ -88,12 +90,21 @@ const Navbar = () => {
         </NavItem>
       </NavLinks>
       <RightContainer>
+        {isLoggedIn ? (
+          <>
+          <ButtonLink to="/account">{userName}</ButtonLink>
+          <ButtonLink to="/history">Order History</ButtonLink>
+          </>
+        ) : (
+          <>
         <ButtonLink to="/login">
           <i className="fa fa-sign-in-alt mr-1"></i> Login
         </ButtonLink>
         <ButtonLink to="/register">
           <i className="fa fa-user-plus mr-1"></i> Register
         </ButtonLink>
+        </>
+        )}
         <ButtonLink to="/cart">
           <CartIcon className="fa fa-cart-shopping"></CartIcon>
           ({cartItems && cartItems.length})

@@ -25,7 +25,7 @@ const Register = () => {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="Name"
+                                    id="userName"
                                     placeholder="Enter Your Name"
                                 />
                             </div>
