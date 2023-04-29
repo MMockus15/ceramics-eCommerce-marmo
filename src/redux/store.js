@@ -8,7 +8,7 @@ import userReducer from './reducer/userReducer';
 const rootReducer = combineReducers({
   cart: cartReducer,
   products: productsReducer,
-  user: userReducer,
+  user: userReducer
 });
 
 const store = configureStore(rootReducer, applyMiddleware(thunk));
