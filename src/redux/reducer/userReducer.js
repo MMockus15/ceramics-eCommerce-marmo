@@ -4,7 +4,7 @@ const initialState = {
   isLoggedIn: false,
   username: null,
   email: null,
-  role: null
+//   role: null
 };
 
 const userSlice = createSlice({
