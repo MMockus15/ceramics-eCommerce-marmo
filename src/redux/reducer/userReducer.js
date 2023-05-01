@@ -15,13 +15,13 @@ const userSlice = createSlice({
       state.isLoggedIn = true;
       state.username = action.payload.username;
       state.email = action.payload.email;
-      state.role = action.payload.role;
+    //   state.role = action.payload.role;
     },
     logout(state) {
       state.isLoggedIn = false;
       state.username = null;
       state.email = null;
-      state.role = null;
+    //   state.role = null;
     }
   }
 });
