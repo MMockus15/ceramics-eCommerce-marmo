@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Footer, Navbar } from "../components";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../redux/actions/userActions";
+import { loginUser } from "../redux/action/userActions";
 
 const Login = () => {
   const navigate = useNavigate();

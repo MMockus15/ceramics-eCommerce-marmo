@@ -1,4 +1,4 @@
-import db from "./db.json";
+import db from "../db.json";
 import { login } from "./userSlice";
 
 export const loginUser = (username, password) => async dispatch => {
